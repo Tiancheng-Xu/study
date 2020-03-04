@@ -20,7 +20,7 @@
   </div>
 </template>
 <script>
-// git vscode demo
+// git ceshi
 import { mapState, mapGetters } from "vuex";
 export default {
   data() {
