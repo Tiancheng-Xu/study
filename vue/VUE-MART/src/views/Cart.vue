@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+// git 测试
 import { mapState, mapGetters } from "vuex";
 export default {
   data() {
