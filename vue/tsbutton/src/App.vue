@@ -20,7 +20,6 @@ export default class App extends Vue {
 }
 </script>
 
-
 <style lang="stylus">
 html, body
     width 100%
