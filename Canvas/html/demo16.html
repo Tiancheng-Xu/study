@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>刮刮卡</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        canvas{
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body onload="draw()">
+    
+    <div style="position: relative;">
+    <img src="../1.jpg" alt="bg" />
+        <canvas id="canvas" width="800" height="600">
+            你的浏览器版本太低，请更新！
+        </canvas>
+    </div>
+    <h-header>
+        <h2>刮刮卡</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d")
+
+                //将图片用灰色盖住
+                ctx.beginPath()
+                ctx.fillStyle='gray'
+                ctx.fillRect(0,0,canvas.width,canvas.height)
+                
+                ctx.globalCompositeOperation='destination-out';
+                ctx.lineWidth=20
+                ctx.lineCap = 'round'
+
+                //onmousedown
+                canvas.onmousedown = function (e) {
+                    var ev = e || window.event
+                    var x = ev.clientX - canvas.offsetLeft
+                    var y = ev.clientY - canvas.offsetTop
+
+                    // ctx.strokeStyle = 'transport'
+                    ctx.lineWidth = 60
+
+                    // ctx.beginPath()
+                    ctx.moveTo(x, y)
+
+
+                    //onmousemove
+                    canvas.onmousemove = function (e) {
+                        var ev = e || window.event
+                        var x = ev.clientX - canvas.offsetLeft
+                        var y = ev.clientY - canvas.offsetTop
+
+                        ctx.lineTo(x, y)
+
+                        ctx.stroke()
+                    }
+                }
+
+                //onmousemove
+                canvas.onmouseup = function (e) {
+                    canvas.onmousemove = ''
+                }
+            } else {
+                //alert("你的浏览器版本太低，请更新！")
+            }
+        }
+    </script>
+</body>

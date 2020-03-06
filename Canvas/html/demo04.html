@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>arc</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>arc</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <canvas id="canvas" width="800" height="600">
+        你的浏览器版本太低，请更新！
+    </canvas>
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d")
+
+                // 圆的组成：圆心（x,y）半径 开始角度 结束角度 顺时针/逆时针
+                ctx.strokeStyle='orange';
+                ctx.lineWidth = 10
+                
+                // 画圆
+                // ctx.arc(x,y,radius,starAngle,endAngle,anticlockwise)
+                // ctx.arc(400,300,150,0,Math.PI*1.5,false)
+                ctx.arc(400,300,150,0,Math.PI*2)
+
+                ctx.stroke()
+
+            } else {
+                //alert("你的浏览器版本太低，请更新！")
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>涂鸦</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>涂鸦</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <canvas id="canvas" width="800" height="600">
+        你的浏览器版本太低，请更新！
+    </canvas>
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d")
+
+                //添加鼠标按下时间
+                canvas.onmousedown = function (e) {
+                    var ev = e || window.event
+                    var x = ev.clientX - canvas.offsetLeft
+                    var y = ev.clientY - canvas.offsetTop
+
+                    ctx.strokeStyle = 'gray'
+                    ctx.lineWidth = 10
+
+                    ctx.beginPath()
+                    ctx.moveTo(x, y)
+
+
+                    //onmousemove
+                    canvas.onmousemove = function (e) {
+                        var ev = e || window.event
+                        var x = ev.clientX - canvas.offsetLeft
+                        var y = ev.clientY - canvas.offsetTop
+
+                        ctx.lineTo(x, y)
+
+                        ctx.stroke()
+                    }
+                }
+
+                //onmousemove
+                canvas.onmouseup = function (e) {
+                    canvas.onmousemove = ''
+                }
+            } else {
+                //alert("你的浏览器版本太低，请更新！")
+            }
+        }
+    </script>
+</body>

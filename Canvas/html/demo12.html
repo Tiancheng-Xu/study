@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制图片</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>绘制图片</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <canvas id="canvas" width="800" height="600">
+        你的浏览器版本太低，请更新！
+    </canvas>
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d")
+ 
+                var img = new Image()
+                img.src = '../1.jpg'
+
+                img.onload = function () {
+                    var ptrn = ctx.createPattern(img, 'repeat-x');
+                    ctx.fillStyle = ptrn;
+                    ctx.fillRect(0, 0, 800, 600);
+                }
+
+
+            } else {
+                //alert("你的浏览器版本太低，请更新！")
+            }
+        }
+    </script>
+</body>

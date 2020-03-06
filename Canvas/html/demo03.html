@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>两个三角形</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>两个三角形</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <canvas id="canvas" width="800" height="600">
+        你的浏览器版本太低，请更新！
+    </canvas>
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d")
+
+                /*图形的基本元素是路径
+                     1.创建起始点
+                     2.使用画图命令画路径
+                     3.闭合路径
+                     4.通过描边或填充绘制图形
+                */
+
+                //   绘制三角形
+                ctx.beginPath()
+                //  起始点（400，50）
+                ctx.moveTo(25, 25)
+                //  二点（425,75）
+                ctx.lineTo(105, 25)
+                //  三点
+                ctx.lineTo(25, 105)
+                //  填充
+                ctx.fill()
+
+                //   绘制三角形
+                ctx.beginPath()
+                //  起始点
+                ctx.moveTo(125, 125)
+                //  二点
+                ctx.lineTo(125, 45)
+                //  三点
+                ctx.lineTo(45, 125)
+                //  封闭
+                // ctx.lineTo(150, 400)
+                // ctx.stroke()
+                //  闭合
+                ctx.closePath();
+                ctx.stroke()
+                
+
+            } else {
+                //alert("你的浏览器版本太低，请更新！")
+            }
+        }
+    </script>
+</body>

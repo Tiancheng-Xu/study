@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>fillRect strokeRect clearRect</title>
+   <link rel="stylesheet" href="../style.css">
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>fillRect strokeRect clearRect</h2>
+        <a href="../index.html">back</a></h-header>
+    <canvas id="canvas" width="800" height="600">
+        你的浏览器版本太低，请更新！
+    </canvas>
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d")
+                ctx.fillStyle=('rgb(200,0,0)')
+                ctx.fillRect(10,10,350,300);
+
+                ctx.fillStyle=('rgba(0,0,200,0.5)')
+                ctx.fillRect(30,30,350,300)
+                
+                ctx.strokeStyle='rgb(200,0,0)';
+                ctx.strokeRect(300,210,350,300);
+                
+                ctx.strokeStyle=('rgba(0,0,200,0.5)')
+                ctx.strokeRect(330,230,350,300)
+                
+                 //  清除指定矩形区域
+                 ctx.clearRect(60, 60, 200, 200)
+            } else {
+                //alert("你的浏览器版本太低，请更新！")
+            }
+        }
+    </script>
+</body>
