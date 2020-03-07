@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>水平全景滚动</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        canvas {
+            margin: 0 auto;
+            box-shadow: 0 0 40px #333;
+        }
+    </style>
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>水平全景滚动</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <div style="position: relative;">
+        <canvas id="canvas" width="400" height="600">
+            你的浏览器版本太低，请更新！
+        </canvas>
+    </div>
+    
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d')
+
+                var y = 0
+                //水平背景移动
+                function backgroundMove() {
+                    //记录转态
+                    ctx.save()
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.translate(0, y)
+                    ctx.drawImage(bgImage, 0, 0)
+                    ctx.drawImage(bgImage, 0, canvas.height * -1)
+
+                    //判断x的偏移量
+                    y++
+
+                    if (y > canvas.height) {
+                        y = 0
+                    }
+
+                    ctx.restore()
+
+                    window.requestAnimationFrame(backgroundMove)
+                }
+
+                var bgImage = new Image()
+
+                bgImage.onload = function () {
+                    backgroundMove()
+                }
+
+                bgImage.src = '../3.jpg'
+            }
+        }
+
+    </script>
+</body>

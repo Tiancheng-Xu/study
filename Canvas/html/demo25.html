@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>save() && restore()</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        canvas {
+            margin: 0 auto;
+            box-shadow: 0 0 40px #333;
+        }
+    </style>
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>save() && restore()</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <div style="position: relative;">
+        <canvas id="canvas" width="800" height="700">
+            你的浏览器版本太低，请更新！
+        </canvas>
+    </div>
+
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d')
+
+                ctx.beginPath();
+                ctx.fillStyle = 'blue';
+                ctx.save()
+                ctx.fillRect(100, 100, 150, 150)
+                ctx.closePath()
+
+                ctx.beginPath();
+                ctx.fillStyle = 'red';
+                ctx.save()
+                ctx.fillRect(100, 300, 150, 150)
+                ctx.closePath();
+                
+                ctx.beginPath()
+                ctx.restore()
+                ctx.fillRect(350,100,150,150)
+
+                ctx.beginPath()
+                ctx.restore()
+                ctx.fillRect(350,300,150,150)
+            }
+        }
+
+    </script>
+</body>

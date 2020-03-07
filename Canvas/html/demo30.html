@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        canvas {
+            margin: 0 auto;
+            box-shadow: 0 0 40px #333;
+        }
+    </style>
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>贪吃蛇</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <div style="position: relative;">
+        <canvas id="canvas" width="800" height="600">
+            你的浏览器版本太低，请更新！
+        </canvas>
+    </div>
+
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d')
+
+                /*贪吃蛇步骤
+                *
+                *1.先把蛇画出来
+                *
+                *   1.1蛇头和蛇身
+                *
+                *2.让蛇动起来
+                *
+                *   2.1 添加键盘事件
+                *   2.2 animate运动
+                *
+                *3.随机投放食物
+                *
+                *   3.1 坐标位置
+                *   3.2 是否投放到了蛇头和蛇身上（数组排重）
+                *
+                *4.吃食物
+                *
+                *   4.1 碰撞检测
+                *   4.2 将食物添加到蛇身上
+                *
+                *5.边缘检测，判断游戏是否结束
+                *
+                *   5.1 碰撞检测
+                *   5.2 GameOver
+                */
+            }
+        }
+
+    </script>
+</body>
