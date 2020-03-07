@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>矩形直线运动-setinterval()</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        canvas {
+            margin: 0 auto;
+            box-shadow: 0 0 40px #333;
+        }
+    </style>
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>矩形直线运动-setinterval()</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <div style="position: relative;">
+        <canvas id="canvas" width="800" height="600">
+            你的浏览器版本太低，请更新！
+        </canvas>
+    </div>
+
+    <script>
+        function draw() {
+            var canvas = document.getElementById("canvas")
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d')
+
+                //animate 直线运动
+
+                ctx.beginPath();
+
+                /*
+                *canvas的动画原理
+                *1.绘制图像
+                *2.清除图像
+                *3.更新位置
+                *4.绘制图像
+                *5. 234234
+                */
+
+                //1.绘制图像
+                var x = 0, y = 0, width = 100, height = 100
+                ctx.fillStyle = 'red';
+                ctx.fillRect(x, y, width, height)
+
+                var speedX = 2
+                var speedY = 2
+
+                setInterval(() => {
+                    //2.清除画布
+                    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+                    //3.更新位置
+                    x += speedX
+                    //判断x的值是否大于容器最右侧或小于容器最左侧
+                    if (x > canvas.width - width || x < 0) {
+                        speedX *= -1
+                    }
+
+                    y += speedY
+
+                    if (y > canvas.height - height || y < 0) {
+                        speedY *= -1
+                    }
+
+                    //4.绘制图像
+                    ctx.fillRect(x, y, width, height)
+                }, 10);
+            }
+        }
+    </script>
+</body>

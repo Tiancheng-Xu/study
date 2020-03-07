@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图像组合</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        canvas {
+            margin: 0 auto;
+            box-shadow: 0 0 40px #333;
+        }
+    </style>
+</head>
+
+<body onload="draw()">
+    <h-header>
+        <h2>图像组合</h2>
+        <a href="../index.html">back</a>
+    </h-header>
+    <div style="position: relative;">
+        <canvas id="canvas1" width="300" height="300">
+            你的浏览器版本太低，请更新！
+        </canvas>
+        <canvas id="canvas2" width="300" height="300">
+            你的浏览器版本太低，请更新！
+        </canvas>
+        <canvas id="canvas3" width="300" height="300">
+            你的浏览器版本太低，请更新！
+        </canvas>
+        <canvas id="canvas4" width="300" height="300">
+            你的浏览器版本太低，请更新！
+        </canvas>
+    </div>
+
+    <script>
+        function draw() {
+            var canvas1 = document.getElementById("canvas1")
+            var canvas2 = document.getElementById("canvas2")
+            var canvas3 = document.getElementById("canvas3")
+            var canvas4 = document.getElementById("canvas4")
+
+            //图像混合1
+            var ctx1 = canvas1.getContext("2d")
+
+            ctx1.beginPath();
+            ctx1.fillStyle = 'red';
+            ctx1.fillRect(50, 50, 100, 100);
+
+            // ctx1.globalCompositeOperation = 'source-over';
+            ctx1.globalCompositeOperation = 'destination-over';
+            ctx1.fillStyle = 'green'
+            ctx1.arc(150, 150, 50, 0, Math.PI * 2)
+            ctx1.fill()
+
+            /*
+            *目标图像：画布已经存在的图像
+            *源图像：即将滑到画布上的图像
+            *47代码之前是目标图像，之后是源图像
+            *
+            *source-over:重叠区域，源图像覆盖目标图像
+            *source-over:重叠区域，目标图像覆盖源图像
+            */
+            
+            //图像混合2
+            var ctx2 = canvas2.getContext("2d")
+
+            ctx2.beginPath();
+            ctx2.fillStyle = 'red';
+            ctx2.fillRect(50, 50, 100, 100);
+
+            /*
+            *source-atop:只显示自己与目标图像重叠的部分
+            *destination-atop:只显示与源图像重叠的部分
+            */
+            ctx2.globalCompositeOperation = 'source-atop';
+            // ctx2.globalCompositeOperation = 'destination-atop';
+            ctx2.fillStyle = 'green'
+            ctx2.arc(150, 150, 50, 0, Math.PI * 2)
+            ctx2.fill()
+
+            //图像混合3
+            var ctx3 = canvas3.getContext("2d")
+
+            ctx3.beginPath();
+            ctx3.fillStyle = 'red';
+            ctx3.fillRect(50, 50, 100, 100);
+
+            /*
+            *source-in:只显示源图像的重叠部分
+            *destination-in:只显示目标图像的重叠部分
+            */
+            // ctx3.globalCompositeOperation = 'source-in';
+            ctx3.globalCompositeOperation = 'destination-in';
+            ctx3.fillStyle = 'green'
+            ctx3.arc(150, 150, 50, 0, Math.PI * 3)
+            ctx3.fill()
+
+            //图像混合4
+            var ctx4 = canvas4.getContext("2d")
+
+            ctx4.beginPath();
+            ctx4.fillStyle = 'red';
+            ctx4.fillRect(50, 50, 100, 100);
+
+            /*
+            *source-out:重叠部分不显示，显示不重叠的源图像
+            *destination-out:重叠部分不显示，显示不重叠的目标图像
+            */
+            ctx4.globalCompositeOperation = 'source-out';
+            // ctx4.globalCompositeOperation = 'destination-out';
+            ctx4.fillStyle = 'green'
+            ctx4.arc(150, 150, 50, 0, Math.PI * 4)
+            ctx4.fill()
+            
+
+        }
+    </script>
+</body>
