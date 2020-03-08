@@ -5,8 +5,14 @@ const gravatar = require('gravatar');
 const tools = require('../../config/tools')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
+const passport = require('koa-passport')
+
 //引入User
 const User = require('../../models/User')
+
+//引入验证
+const validateRegisterInput = require('../../validation/register')
+const validateLoginInput = require('../../validation/login')
 
 //test
 router.get('/test', async ctx => {
@@ -21,7 +27,15 @@ router.get('/test', async ctx => {
  */
 
 router.post('/register', async ctx => {
-    console.log(ctx.request.body)
+    // console.log(ctx.request.body)
+    const { errors, isValid } = validateRegisterInput(ctx.request.body)
+
+    //判断是否验证通过
+    if (!isValid) {
+        ctx.status = 400
+        ctx.body = errors
+        return
+    }
 
     //存储到数据库
     const findResult = await User.find({ "email": ctx.request.body.email })
@@ -69,6 +83,15 @@ router.post('/register', async ctx => {
  * @access  接口是公开的
  */
 router.post("/login", async ctx => {
+    const { errors, isValid } = validateLoginInput(ctx.request.body)
+
+    //判断是否验证通过
+    if (!isValid) {
+        ctx.status = 400
+        ctx.body = errors
+        return
+    }
+
     //查询
     const findResult = await User.find({ email: ctx.request.body.email })
     const user = findResult[0]
@@ -85,7 +108,7 @@ router.post("/login", async ctx => {
         if (result) {
             //返回token
             const payload = { id: user.id, name: user.name, avator: user.avator }
-            const token = jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 },'shhhhh')
+            const token = jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, 'shhhhh')
 
             ctx.status = 200
             ctx.body = { success: true, token: 'Bearer ' + token }
@@ -95,5 +118,25 @@ router.post("/login", async ctx => {
         }
     }
 })
+
+/**
+ * @route POST api/users/current
+ * @desc    用户信息地址    返回用户信息
+ * @access  接口是私有的
+ */
+
+router.get(
+    '/current',
+    passport.authenticate('jwt', { session: false }),
+    async ctx => {
+        ctx.body = {
+            id: ctx.state.user.id,
+            name: ctx.state.user.name,
+            email: ctx.state.user.email,
+            avator: ctx.state.user.avator
+        }
+
+    }
+)
 
 module.exports = router.routes()
