@@ -3,33 +3,30 @@
 		<view class="header">
 			<!-- 定位城市 -->
 			<view class="addr">
-				<view class="icon iconfont">&#xe651;</view>
-				{{ city }}
+				<view class="icon iconfont">&#xe650;</view> {{city}}
 			</view>
 			<!-- 搜索框 -->
 			<view class="input-box">
-				<input
-					placeholder="默认关键字"
-					placeholder-style="color:#c0c0c0;"
-				/>
+				<input type="text" placeholder="some words..." placeholder-style="color:#c0c0c0" />
 				<view class="icon iconfont">&#xe65c;</view>
 			</view>
-			<!-- 右侧图标按钮 -->
+
+			<!-- 提示信息 -->
 			<view class="icon-btn">
-				<view class="icon iconfont" >&#xe70a;</view>
+				<view class="icon iconfont">&#xe70a;</view>
 			</view>
 		</view>
 		<!-- 占位 -->
 		<view class="place"></view>
 	</view>
+
 </template>
 
 <script>
-	
 	export default {
-		data(){
+		data() {
 			return {
-				city: '宁波'
+				city: "宁波"
 			}
 		}
 	}
@@ -46,10 +43,11 @@
 		z-index: 10;
 		background-color: #fff;
 		top: 0;
+		// 条件编译 设置离顶部的高度
 		/*  #ifdef  APP-PLUS  */
 		top: var(--status-bar-height);
 		/*  #endif  */
-	
+
 		.addr {
 			width: 120upx;
 			height: 60upx;
@@ -57,6 +55,7 @@
 			display: flex;
 			align-items: center;
 			font-size: 28upx;
+
 			.icon {
 				height: 60upx;
 				margin-right: 5upx;
@@ -66,6 +65,7 @@
 				color: #ffc50a;
 			}
 		}
+
 		.input-box {
 			width: 100%;
 			height: 60upx;
@@ -74,6 +74,7 @@
 			position: relative;
 			display: flex;
 			align-items: center;
+
 			.icon {
 				display: flex;
 				align-items: center;
@@ -85,17 +86,20 @@
 				font-size: 34upx;
 				color: #c0c0c0;
 			}
+
 			input {
 				padding-left: 28upx;
 				height: 28upx;
 				font-size: 28upx;
 			}
 		}
+
 		.icon-btn {
 			width: 60upx;
 			height: 60upx;
 			flex-shrink: 0;
 			display: flex;
+
 			.icon {
 				width: 60upx;
 				height: 60upx;
@@ -106,6 +110,7 @@
 			}
 		}
 	}
+
 	.place {
 		background-color: #ffffff;
 		height: 100upx;

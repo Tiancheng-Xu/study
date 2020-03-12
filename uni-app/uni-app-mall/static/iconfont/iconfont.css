@@ -1,6 +1,6 @@
-@font-face {font-family: "iconfont";
-  src: url('~@/static/iconfont/iconfont.ttf')
-	    
+@font-face {
+  font-family: "iconfont";
+  src: url('~@/static/iconfont/iconfont.ttf'); 
 }
 
 .iconfont {
@@ -149,5 +149,9 @@
 
 .icon-qr_code_light:before {
   content: "\e7f8";
+}
+
+.icon-ren:before {
+  content: "\e605";
 }
 

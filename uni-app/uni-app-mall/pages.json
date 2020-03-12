@@ -4,7 +4,7 @@
 			"path": "pages/tabBar/home/home",
 			"style": {
 				"navigationBarTitleText": "首页",
-				"app-plus": {
+				"app-plus": { // 取消默认的状态
 					"titleNView": false,
 					"bounce": "none"
 				}
@@ -14,7 +14,7 @@
 			"path": "pages/tabBar/category/category",
 			"style": {
 				"navigationBarTitleText": "分类",
-				"app-plus": {
+				"app-plus": { // 取消默认的状态来
 					"titleNView": false,
 					"bounce": "none"
 				}
@@ -29,7 +29,11 @@
 		{
 			"path": "pages/tabBar/user/user",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"backgroundTextStyle": "light",
+				"navigationBarBackgroundColor": "#f06c7a",
+				"backgroundColorTop": "#f06c7a",
+				"navigationBarTextStyle": "white"
 			}
 		},
 		{
@@ -37,14 +41,13 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": true,
-				"onReachBottomDistance":0
+				"onReachBottomDistance": 0
 			}
 		},
 		{
 			"path": "pages/goods/goods",
 			"style": {
 				"navigationBarTitleText": "商品",
-				"navigationBarTextStyle": "black",
 				"h5": {
 					"titleNView": false
 				},
@@ -59,15 +62,40 @@
 			"style": {
 				"navigationBarTitleText": "商品评论"
 			}
+		},
+		{
+			"path": "pages/order/confirm",
+			"style": {
+				"navigationBarTitleText": "确定订单"
+			}
+		},
+		{
+			"path": "pages/tabBar/user/qrcode",
+			"style": {
+				"navigationBarTitleText": "我的二维码"
+			}
 		}
 	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app-mall",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	},
 	"tabBar": {
 		"color": "#333333",
 		"selectedColor": "#f06c7a",
 		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [
-			{
+		"backgroundColor": "#FFFFFF",
+		"list": [{
 				"pagePath": "pages/tabBar/home/home",
 				"iconPath": "static/img/tabBar/home.png",
 				"selectedIconPath": "static/img/tabBar/home-on.png",
@@ -90,22 +118,6 @@
 				"iconPath": "static/img/tabBar/user.png",
 				"selectedIconPath": "static/img/tabBar/user-on.png",
 				"text": "我的"
-			}
-		]
-	},
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#fff",
-		"backgroundColor": "#fff"
-	},
-	"condition" : { //模式配置，仅开发期间生效
-		"current": 0, //当前激活的模式(list 的索引项)
-		"list": [
-			{
-				"name": "", //模式名称
-				"path": "", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]
 	}

@@ -1,19 +1,18 @@
 import Vue from 'vue'
-import App from './App' 
+import App from './App'
 import http from './utils/https.js'
-
-// 网络请求
-Vue.prototype.request = http
+import status from './components/status.vue'
 
 Vue.config.productionTip = false
+Vue.prototype.request = http
 
-// 注册全局组件
-import status from './components/status.vue'
+// 全局注册组件
 Vue.component('page-status', status)
 
 App.mpType = 'app'
 
 const app = new Vue({
-    ...App
+	...App
 })
+
 app.$mount()
