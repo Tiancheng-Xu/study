@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="info" wx:for="{{books}}">
+    <image class="book-cover" src="{{item.image}}"></image>
+    <text>{{item.title}}</text>
+    <text>{{item.publisher}}</text>
+    <text>￥{{item.price}}</text>
+    <text>{{item.summary}}</text>
+    <ul>
+      <h2 class="title">标签：</h2>
+      <li wx:for="{{item.tags}}">{{item.title}} 、</li>
+    </ul>
+
+  </view>
+
+
+</view>

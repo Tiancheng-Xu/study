@@ -1,0 +1,23 @@
+.info {
+  /* height: 300px; */
+  margin: 30px auto;
+  text-align: center;
+}
+
+.book-cover {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+text {
+  text-indent: 2em;
+  display: block;
+  text-align: left;
+  margin: 0 20px;
+}
+
+ul {
+  display: block;
+  margin-top: 20px;
+}
